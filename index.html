@@ -81,20 +81,22 @@
 			]
 		});
 		
-		h('#nav1').tap(function(){changeSub(1)});
-		h('#nav2').tap(function(){changeSub(2)});
-		h('#nav3').tap(function(){changeSub(3)});
-		h('#nav4').tap(function(){changeSub(4)});
-		function changeSub(index){
-			var sub1=plus.webview.getWebviewById('home.html');
-			var sub2=plus.webview.getWebviewById('note.html');
-			var sub3=plus.webview.getWebviewById('other.html');
-			var sub4=plus.webview.getWebviewById('search.html');
-			sub1.setStyle({left:(1-index)*100+"%"});
-			sub2.setStyle({left:(2-index)*100+"%"});
-			sub3.setStyle({left:(3-index)*100+"%"});
-			sub4.setStyle({left:(4-index)*100+"%"});
-		}
+        mui.plusReady(function(){
+        	h('#nav1').tap(function(){changeSub(1)});
+			h('#nav2').tap(function(){changeSub(2)});
+			h('#nav3').tap(function(){changeSub(3)});
+			h('#nav4').tap(function(){changeSub(4)});
+			function changeSub(index){
+				var sub1=plus.webview.getWebviewById('home.html');
+				var sub2=plus.webview.getWebviewById('note.html');
+				var sub3=plus.webview.getWebviewById('other.html');
+				var sub4=plus.webview.getWebviewById('search.html');
+				sub1.setStyle({left:(1-index)*100+"%"});
+				sub2.setStyle({left:(2-index)*100+"%"});
+				sub3.setStyle({left:(3-index)*100+"%"});
+				sub4.setStyle({left:(4-index)*100+"%"});
+			}
+        });
 	</script>
 </body>
 </html>
