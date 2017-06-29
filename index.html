@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>loachblog-app</title>
+    
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav hbg">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <div id="logo">
+	    	<img src="img/logo.png" />
+	    </div>
+	    <h1 class="mui-title">loachblog个人笔记</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab" id="footer">
+	    <a class="mui-tab-item mui-active" id="nav1">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a class="mui-tab-item" id="nav2">
+	        <span class="mui-icon mui-icon-list"></span>
+	        <span class="mui-tab-label">笔记</span>
+	    </a>
+	    <a class="mui-tab-item" id="nav3">
+	        <span class="mui-icon mui-icon-star"></span>
+	        <span class="mui-tab-label">其他</span>
+	    </a>
+	    <a class="mui-tab-item" id="nav4">
+	        <span class="mui-icon mui-icon-search"></span>
+	        <span class="mui-tab-label">搜索</span>
+	    </a>
+	</nav>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/h.min.js" ></script>
+	<script type="text/javascript">
+		mui.init({
+			subpages:[
+			{
+				url:'home.html',
+				id:'home.html',
+				styles:{
+					top:'44px',
+					bottom:'44px',
+					width:'100%'
+				}
+			},
+			{
+				url:'note.html',
+				id:'note.html',
+				styles:{
+					top:'44px',
+					bottom:'44px',
+					width:'100%',
+					left:'100%'
+				}
+			},
+			{
+				url:'other.html',
+				id:'other.html',
+				styles:{
+					top:'44px',
+					bottom:'44px',
+					width:'100%',
+					left:'200%'
+				}
+			},
+			{
+				url:'search.html',
+				id:'search.html',
+				styles:{
+					top:'44px',
+					bottom:'44px',
+					width:'100%',
+					left:'300%'
+				}
+			}
+			]
+		});
+		
+		h('#nav1').tap(function(){changeSub(1)});
+		h('#nav2').tap(function(){changeSub(2)});
+		h('#nav3').tap(function(){changeSub(3)});
+		h('#nav4').tap(function(){changeSub(4)});
+		function changeSub(index){
+			var sub1=plus.webview.getWebviewById('home.html');
+			var sub2=plus.webview.getWebviewById('note.html');
+			var sub3=plus.webview.getWebviewById('other.html');
+			var sub4=plus.webview.getWebviewById('search.html');
+			sub1.setStyle({left:(1-index)*100+"%"});
+			sub2.setStyle({left:(2-index)*100+"%"});
+			sub3.setStyle({left:(3-index)*100+"%"});
+			sub4.setStyle({left:(4-index)*100+"%"});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>loachblog-app</title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+	note
+	<script type="text/javascript" src="js/mui.min.js" ></script>
+
+	<script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	var _index,_self,_next;
+      	mui.plusReady(function(){
+      		_self=plus.webview.currentWebview();
+      		_prov=plus.webview.getWebviewById('home.html');
+      		_next=plus.webview.getWebviewById('other.html');
+      		_index=plus.webview.getLaunchWebview();
+      		_self.drag({
+      			direction:'left',
+      			moveMode:'followFinger'
+      		},{
+      			view:_next,
+      			moveMode:'follow'
+      		},
+      		function(e){
+      			if(e.type=='end')
+      			{
+      				_index.evalJS('h("#footer").find("a").removeClass("mui-active");h("#nav3").addClass("mui-active");');
+      			}
+      		}
+      		);
+      		_self.drag({
+      			direction:'right',
+      			moveMode:'followFinger'
+      		},{
+      			view:_prov,
+      			moveMode:'follow'
+      		},
+      		function(e){
+      			if(e.type=='end'&&e.result)
+      			{
+      				_index.evalJS('h("#footer").find("a").removeClass("mui-active");h("#nav1").addClass("mui-active");');
+      			}
+      		}
+      		);
+      	});
+    </script>
+    
+</body>
+</html>

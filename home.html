@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>loachblog-app</title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+	<div class="mui-content">
+		<ul class="mui-table-view" id="list">
+			<!--
+		    <li class="mui-table-view-cell mui-media">
+		        <a href="javascript:;">
+		            <img class="mui-media-object mui-pull-left" src="img/logo.png">
+		            <div class="mui-media-body">
+		                幸福
+		                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+		                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+		            </div>
+		        </a>
+		    </li>
+		    -->
+	    </ul>
+    </div>
+	<script type="text/javascript" src="js/mui.min.js" ></script>
+    <script type="text/javascript" src="js/h.min.js" ></script>
+	<script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	
+      	var _index,_self,_next;
+      	mui.plusReady(function(){     		
+      		mui.get('http://www.zhangbailong.com/Api/Public/LoachBlog/?service=Articles.getAllArticles&pageNum=1',
+      		function(res){
+				if(res.ret == 200){
+			        //如果成功打印信息并且做出相应的处理
+			        alert(rs.data.list.length);
+			        var data=rs.data.list;
+			        var html='';
+			        for(var i=0;i<data.length;i++)
+			        {
+			        	//var time=get_Time_Formart(data[i].unix_time);
+			        	var time="2017-6-29 17:15:35";
+			        	//var content=html_Format(data[i].content).substring(0,100);
+			        	html+='<li class="mui-table-view-cell mui-media">'+
+			        '<a href="javascript:;">'+
+			            '<img class="mui-media-object mui-pull-left" src="img/logo.png">'+
+			            '<div class="mui-media-body">'+
+			                 
+			                '<p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>'+
+			                '<p><font style="color:#000000;font-size:12px;">作者：</font><font style="color:#188EEE;font-size:12px;">loach</font> <font style="color:#000000;font-size:12px;">时间：</font><font style="color:#188EEE;font-size:12px;">'+time+'</font></p>'+	
+			            '</div>'+
+			        '</a>'+
+			    '</li>';					
+			        }
+			        h('#list').html(html);
+		       }
+			 else{
+					mui.toast('没有数据！');
+				}
+      		});
+      		
+      		
+      		_self=plus.webview.currentWebview();
+      		_next=plus.webview.getWebviewById('note.html');
+      		_index=plus.webview.getLaunchWebview();
+      		_self.drag({
+      			direction:'left',
+      			moveMode:'followFinger'
+      		},{
+      			view:_next,
+      			moveMode:'follow'
+      		},
+      		function(e){
+      			if(e.type=='end'&&e.result)
+      			{
+      				_index.evalJS('h("#footer").find("a").removeClass("mui-active");h("#nav2").addClass("mui-active");');
+      			}
+      		}
+      		);
+      	});
+    </script>
+    
+</body>
+</html>
